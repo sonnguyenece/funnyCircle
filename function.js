@@ -3,12 +3,6 @@ function Circle(x, y, radius, color) {
     this.y = y;
     this.radius = radius;
     this.color = color;
-    // this.setX = function (x) {
-    //     this.x = x;
-    // };
-    // this.setY = function (y) {
-    //     this.y = y;
-    // };
 }
 
 function createCircle(x, y, R, color) {
@@ -18,16 +12,6 @@ function createCircle(x, y, R, color) {
     ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
     ctx.fillStyle = color;
     ctx.fill();
-}
-
-function createRadomRCircle() {
-    var ctx = document.getElementById("myCanvas").getContext("2d");
-    var radius = Math.floor(Math.random() * 80);
-    console.log(radius);
-    var circle = new Circle(300, 100, radius);
-    ctx.beginPath();
-    ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-    ctx.stroke();
 }
 
 function getRandomHex() {
@@ -41,18 +25,6 @@ function getRandomColor() {
     return "rgb(" + red + "," + blue + "," + green + ")";
 }
 
-function createRandomColorCircle() {
-    var ctx = document.getElementById("myCanvas").getContext("2d");
-    var radius = Math.floor(Math.random() * 80);
-    var color = getRandomColor();
-    var circle = new Circle(500, 100, radius);
-    ctx.beginPath();
-    ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-    ctx.fillStyle = color;
-    ctx.fill();
-}
-
-
 function createRadomXYCircle() {
     var ctx = document.getElementById("myCanvas").getContext("2d");
     var radius = Math.floor(Math.random() * 80);
@@ -63,9 +35,7 @@ function createRadomXYCircle() {
     ctx.beginPath();
     ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
     ctx.fillStyle = color;
-    // if (Math.floor(Math.random() * 2) >= 0.5)
-        ctx.fill();
-    // else ctx.stroke();
+    ctx.fill();
     return circle;
 }
 
@@ -87,7 +57,7 @@ function timeOut(idCircle) {
 
 let count = 0;
 let moveLeft;
-let moveRight=true;
+let moveRight = true;
 
 function moveCircle(idCircle) {
     // if (count===20){
@@ -107,9 +77,9 @@ function moveCircle(idCircle) {
         count++;
         timeOut(idCircle);
     }
-    if (count===20){
-        moveRight=false;
-        moveLeft=true
+    if (count === 20) {
+        moveRight = false;
+        moveLeft = true;
     }
 
     if (moveLeft) {
@@ -121,15 +91,13 @@ function moveCircle(idCircle) {
         count--;
         timeOut(idCircle);
     }
-    if (count===-20){
-        moveRight=true;
-        moveLeft=false
+    if (count === -20) {
+        moveRight = true;
+        moveLeft = false
     }
 
 }
 
 createCircle();
-createRadomRCircle();
-createRandomColorCircle();
 createRadomXYCircle();
 createMultipleCircle();
